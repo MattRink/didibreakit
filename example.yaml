@@ -1,0 +1,15 @@
+options:
+  defaultScheme: 'https'
+  urlPattern: '%branch%.%host%'
+  verifySSL: false
+  defaultURLs:
+    /: 200
+
+hosts:
+  example.com:
+    scheme: 'https'
+    urls:
+      /news: 200
+  example2.com:
+    urls:
+      /deals: 200
