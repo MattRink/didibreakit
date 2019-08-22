@@ -7,7 +7,7 @@ composer require mattrink/didibreakit
 
 ## Usage
 ```shell
-./didibreakit tests:run vanilla.yaml
+./didibreakit tests:run example.yaml
 ```
 
 ## Options
