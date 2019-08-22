@@ -1,12 +1,12 @@
 # didibreakit - A basic smoke testing library designed for use in CI
 
 ## Installation
-```
+```shell
 composer require mattrink/didibreakit
 ```
 
 ## Usage
-```
+```shell
 ./didibreakit tests:run vanilla.yaml
 ```
 
@@ -25,7 +25,7 @@ Within the `options` section of the config file you can provide some default con
 You can specify the hosts and per-host URLs to check via the `hosts` option in the config. You can specify multiple hosts and URLs to check. The host key will be replaced into the `%host%` placeholder in the `urlPattern`. Along with each URL you also need to specify the expected HTTP status response, if a URL responds withs a status code that does not match the expected one the script will return a non-zero status code.
 
 ### Example config
-```
+```yaml
 options:
   defaultScheme: 'https'
   urlPattern: '%branch%.%host%'
