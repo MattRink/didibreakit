@@ -13,3 +13,5 @@ hosts:
   example2.com:
     urls:
       /deals: 200
+  example3.com:
+  example4.com:
