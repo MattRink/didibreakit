@@ -2,13 +2,10 @@
 
 namespace MattRink\didibreakit\Commands;
 
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\TransferException;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\EachPromise;
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
 use MattRink\didibreakit\ConfigLoader;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -67,9 +64,11 @@ final class RunTestsCommand extends Command
 
         // Function to handle responses
         $handleResponse = function ($response, int $requestIndex) use ($output, $requests, &$returnCode) {
-            if ($response instanceof ClientException) {
+            $statusCode = 0;
+
+            if ($response instanceof RequestException) {
                 $statusCode = $response->getCode();
-            } else {
+            } else if ($response instanceof ResponseInterface) {
                 $statusCode = $response->getStatusCode();
             }
 
