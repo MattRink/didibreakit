@@ -11,6 +11,8 @@ final class Options
     private $branch = '';
     private $verifySSL = true;
     private $defaultURLs = [];
+    private $timeout = 5;
+    private $failOnTimeout = true;
 
     /**
      * Left empty to prevent instantiating it directly.
@@ -33,6 +35,8 @@ final class Options
         $options->branch = $branch;
         $options->verifySSL = $configOptions['verifySSL'] ?? true;
         $options->defaultURLs = $configOptions['defaultURLs'] ?? [];
+        $options->timeout = $configOptions['timeout'] ?? 5;
+        $options->failOnTimeout = $configOptions['failOnTimeout'] ?? true;
 
         return $options;
     }
@@ -65,5 +69,15 @@ final class Options
     public function getDefaultURLs() : array
     {
         return $this->defaultURLs;
+    }
+
+    public function getTimeout() : int
+    {
+        return $this->timeout;
+    }
+
+    public function failOnTimeout() : bool
+    {
+        return $this->failOnTimeout;
     }
 }
